@@ -1,6 +1,7 @@
 import { styles } from "./Game.styles";
-import { View } from "react-native";
+
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export function GameScreen() {
-  return <View></View>;
+  return <SafeAreaView></SafeAreaView>;
 }
