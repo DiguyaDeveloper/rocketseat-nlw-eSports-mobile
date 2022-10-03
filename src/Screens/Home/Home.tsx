@@ -6,7 +6,7 @@ import { GameCard } from "../../components/GameCard/GameCard";
 import { useEffect, useState } from "react";
 import { Game } from "../../shared/interfaces/game.interface";
 
-export function Home() {
+export function HomeScreen() {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
