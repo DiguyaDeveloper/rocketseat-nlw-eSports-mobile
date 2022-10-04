@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, Image, FlatList } from "react-native";
+import { View, TouchableOpacity, Image, FlatList, Text } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { styles } from "./Game.styles";
 import { useRoute, useNavigation } from "@react-navigation/native";
@@ -37,9 +37,9 @@ export function GameScreen() {
         <View style={styles.header}>
           <TouchableOpacity onPress={handleGoBack}>
             <Entypo name="chevron-thin-left" color={THEME.COLORS.CAPTION_300} />
-            <Image source={logoImg} style={styles.logo} />
-            <View style={styles.right}></View>
           </TouchableOpacity>
+          <View style={styles.right}></View>
+          <Image source={logoImg} style={styles.logo} />
         </View>
 
         <Image
@@ -53,7 +53,20 @@ export function GameScreen() {
         <FlatList
           data={duos}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <DuoCard data={item} />}
+          renderItem={({ item }) => (
+            <DuoCard data={item} onConnect={() => {}} />
+          )}
+          horizontal
+          style={styles.containerList}
+          contentContainerStyle={
+            duos.length > 0 ? styles.contentList : styles.emptyListContent
+          }
+          showsHorizontalScrollIndicator={false}
+          ListEmptyComponent={() => (
+            <Text style={styles.emptyListText}>
+              Não há anúncios publicados ainda.
+            </Text>
+          )}
         />
       </SafeAreaView>
     </Background>
